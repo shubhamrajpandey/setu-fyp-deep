@@ -35,3 +35,32 @@ setu-fyp-deep/
 ├── frontend/                 # React frontend
 ├── backend/                  # Node/Express backend
 └── README.md                 # Project documentation
+
+---
+
+## ⚙️ Setup Instructions
+
+Clone Repository
+
+git clone https://github.com/shubhamrajpandey/setu-fyp-deep.git
+cd setu-fyp-deep
+
+Backend
+
+cd backend
+npm install
+npm run dev
+
+Create a .env file:
+
+PORT=5000
+MONGO_URI=your_mongo_uri
+JWT_SECRET=your_secret
+
+Frontend
+
+cd frontend
+npm install
+npm run dev
+
+
