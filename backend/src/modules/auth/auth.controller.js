@@ -1,4 +1,4 @@
-import User from "../user/user.model.js";
+import User from "../users/user.model.js";
 import { StatusCodes } from "http-status-codes";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
