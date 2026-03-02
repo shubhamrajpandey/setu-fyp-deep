@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import authRoute from "./modules/auth/auth.routes.js";
 import connectDb from "./config/db.js";
+import otpRoute from "./modules/otp/otp.route.js";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ connectDb();
 const PORT = process.env.PORT || 5000;
 
 app.use("/api/auth", authRoute);
+app.use("/api/otp", otpRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

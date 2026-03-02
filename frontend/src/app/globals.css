@@ -1,26 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─────────────────────────────────────────────────────────
+   Tailwind v4: ALL custom design tokens live in @theme
+   This replaces tailwind.config.ts entirely in v4
+───────────────────────────────────────────────────────── */
+@theme {
+  /* Fonts */
+  --font-display: "Cormorant Garamond", serif;
+  --font-body:    "Plus Jakarta Sans", sans-serif;
+
+  /* Setu green palette — use as bg-setu-700, text-setu-500 etc */
+  --color-setu-50:  #f0faf4;
+  --color-setu-100: #dcf5e4;
+  --color-setu-200: #bbeacc;
+  --color-setu-300: #87d8a6;
+  --color-setu-400: #4dbf7a;
+  --color-setu-500: #2aa558;
+  --color-setu-600: #1e8745;
+  --color-setu-700: #1a6e39;
+  --color-setu-800: #185830;
+  --color-setu-900: #154829;
+  --color-setu-950: #0a2918;
+
+  /* Extra brand tokens */
+  --color-cream:    #fefdf8;
+  --color-gold:     #d4a017;
+
+  /* Border radius scale */
+  --radius-sm:  0.5rem;
+  --radius-md:  0.75rem;
+  --radius-lg:  1rem;
+  --radius-xl:  1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─────────────────────────────────────────────────────────
+   Base styles
+───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background-color: #fefdf8;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Scrollbar
+───────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #f0faf4; }
+::-webkit-scrollbar-thumb  { background: #87d8a6; border-radius: 3px; }
+
+/* ─────────────────────────────────────────────────────────
+   Keyframes
+───────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.3); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Animation helper classes
+───────────────────────────────────────────────────────── */
+.animate-fade-in-up   { animation: fadeInUp 0.6s ease-out both; }
+.animate-fade-in-up-1 { animation: fadeInUp 0.6s 0.1s ease-out both; }
+.animate-fade-in-up-2 { animation: fadeInUp 0.6s 0.2s ease-out both; }
+.animate-fade-in-up-3 { animation: fadeInUp 0.6s 0.3s ease-out both; }
+.animate-fade-in-up-4 { animation: fadeInUp 0.6s 0.4s ease-out both; }
+.animate-float        { animation: floatY 4s ease-in-out infinite; }
+.animate-pulse-dot    { animation: pulseDot 2s infinite; }
+
+/* ─────────────────────────────────────────────────────────
+   Component helpers
+───────────────────────────────────────────────────────── */
+
+/* Glassmorphism */
+.glass {
+  background: rgba(254, 253, 248, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(10, 41, 24, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Form inputs */
+.input-setu {
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input-setu:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(42, 165, 88, 0.2);
+  border-color: #2aa558 !important;
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -10px rgba(21, 104, 57, 0.18);
+  border-color: #bbeacc;
+}
+
+/* Leaf divider */
+.leaf-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #87d8a6;
+}
+.leaf-divider::before,
+.leaf-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #bbeacc, transparent);
+}
+
+/* Hero gradient mesh */
+.hero-mesh {
+  background-color: #0a2918;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(42,165,88,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(30,135,69,0.20) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(77,191,122,0.15) 0%, transparent 50%);
 }
