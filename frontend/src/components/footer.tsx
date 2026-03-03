@@ -44,43 +44,6 @@ const footerLinks = {
 export function Footer() {
   return (
     <footer className="bg-setu-950 text-white">
-      <div
-        className="border-b border-white/10 py-14"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--color-setu-800) 0%, var(--color-setu-900) 100%)",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="text-center md:text-left">
-            <h3
-              className="text-2xl font-bold text-white"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Every donation makes a difference.
-            </h3>
-            <p className="text-setu-200 mt-2 text-sm max-w-sm">
-              Join 10,000+ donors building a better Nepal. Your generosity
-              changes lives every day.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-            <Link
-              href="/campaigns"
-              className="px-6 py-3 bg-white text-setu-800 font-semibold rounded-full text-sm hover:bg-setu-50 transition-colors text-center"
-            >
-              Explore Campaigns
-            </Link>
-            <Link
-              href="/register"
-              className="px-6 py-3 bg-setu-500 text-white font-semibold rounded-full text-sm hover:bg-setu-400 transition-colors text-center"
-            >
-              Start Donating
-            </Link>
-          </div>
-        </div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-1">
