@@ -20,6 +20,7 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
+import { CampaignCard, AllCampaignCard } from "@/src/components/campaign-card";
 
 const campaigns = [
   {
@@ -99,203 +100,36 @@ const campaigns = [
   },
 ];
 
-const catConfig: Record<string, { bg: string; text: string; border: string }> =
-  {
-    medical: {
-      bg: "bg-red-50",
-      text: "text-red-700",
-      border: "border-red-100",
-    },
-    education: {
-      bg: "bg-blue-50",
-      text: "text-blue-700",
-      border: "border-blue-100",
-    },
-    emergency: {
-      bg: "bg-orange-50",
-      text: "text-orange-700",
-      border: "border-orange-100",
-    },
-    charity: {
-      bg: "bg-setu-50",
-      text: "text-setu-700",
-      border: "border-setu-200",
-    },
-    animals: {
-      bg: "bg-purple-50",
-      text: "text-purple-700",
-      border: "border-purple-100",
-    },
-  };
-
-function CampaignCard({
-  c,
-  large = false,
-}: {
-  c: (typeof campaigns)[0];
-  large?: boolean;
-}) {
-  const pct = Math.min(Math.round((c.raised / c.goal) * 100), 100);
-  const cfg = catConfig[c.catClass] ?? catConfig.charity;
-  return (
-    <Link
-      href={`/campaigns/${c.id}`}
-      className={[
-        "group block bg-white rounded-2xl overflow-hidden",
-        "border border-setu-100",
-        "shadow-[0_2px_12px_rgba(21,104,57,0.06)]",
-        "hover:shadow-[0_20px_48px_rgba(21,104,57,0.14)]",
-        "hover:-translate-y-1.5 hover:border-setu-200",
-        "transition-all duration-300",
-        large ? "md:col-span-2 md:row-span-2" : "",
-      ].join(" ")}
-    >
-      <div className={`relative overflow-hidden ${large ? "h-72" : "h-48"}`}>
-        <img
-          src={c.img}
-          alt={c.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-        <span
-          className={`absolute top-3 left-3 text-[11px] font-bold px-3 py-1 rounded-full border uppercase tracking-wide ${cfg.bg} ${cfg.text} ${cfg.border}`}
-        >
-          {c.cat}
-        </span>
-        {c.urgent && (
-          <span className="absolute top-3 right-3 flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-red-500 text-white">
-            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-            Urgent
-          </span>
-        )}
-        <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-black/40 backdrop-blur-sm text-white/90 text-[11px] font-medium px-2.5 py-1 rounded-full">
-          <MapPin className="w-3 h-3" />
-          {c.location}
-        </div>
-      </div>
-      <div className={large ? "p-7" : "p-5"}>
-        <h3
-          className={[
-            "font-bold text-setu-950 leading-snug mb-2 group-hover:text-setu-700 transition-colors",
-            large ? "text-xl" : "text-[15px]",
-          ].join(" ")}
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          {c.title}
-        </h3>
-        <p className="text-[13px] text-gray-500 leading-relaxed mb-4 line-clamp-2">
-          {c.desc}
-        </p>
-        <div className="h-1.5 bg-setu-100 rounded-full overflow-hidden mb-2">
-          <div
-            className="h-full bg-gradient-to-r from-setu-700 to-setu-400 rounded-full transition-all duration-700"
-            style={{ width: `${pct}%` }}
-          />
-        </div>
-        <div className="flex justify-between items-center text-[13px] mb-4">
-          <span>
-            <strong className="text-setu-800 font-bold">
-              NPR {c.raised.toLocaleString()}
-            </strong>
-            <span className="text-gray-400 ml-1">
-              of {c.goal.toLocaleString()}
-            </span>
-          </span>
-          <strong className="text-setu-600 font-bold">{pct}%</strong>
-        </div>
-        <div className="flex items-center justify-between pt-3.5 border-t border-setu-50">
-          <div className="flex items-center gap-1.5 text-[12px] text-gray-500 font-medium">
-            <Users className="w-3.5 h-3.5 text-setu-400" />
-            {c.donors.toLocaleString()} donors
-          </div>
-          <span className="flex items-center gap-1.5 px-4 py-2 bg-setu-700 group-hover:bg-setu-600 text-white text-[12px] font-bold rounded-full transition-colors duration-200">
-            Donate Now
-            <ChevronRight className="w-3.5 h-3.5" />
-          </span>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
-function AllCampaignCard({ c }: { c: (typeof campaigns)[0] }) {
-  const pct = Math.min(Math.round((c.raised / c.goal) * 100), 100);
-  const cfg = catConfig[c.catClass] ?? catConfig.charity;
-  return (
-    <Link
-      href={`/campaigns/${c.id}`}
-      className="group block bg-white rounded-2xl overflow-hidden border border-setu-100 shadow-[0_2px_12px_rgba(21,104,57,0.06)] hover:shadow-[0_16px_40px_rgba(21,104,57,0.12)] hover:-translate-y-1 hover:border-setu-200 transition-all duration-300"
-    >
-      <div className="relative h-44 overflow-hidden">
-        <img
-          src={c.img}
-          alt={c.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-        <span
-          className={`absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-full border uppercase tracking-wide ${cfg.bg} ${cfg.text} ${cfg.border}`}
-        >
-          {c.cat}
-        </span>
-        {c.urgent && (
-          <span className="absolute top-3 right-3 flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-red-500 text-white">
-            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-            Urgent
-          </span>
-        )}
-        <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-black/40 backdrop-blur-sm text-white/90 text-[11px] font-medium px-2 py-0.5 rounded-full">
-          <MapPin className="w-3 h-3" />
-          {c.location}
-        </div>
-      </div>
-      <div className="p-5">
-        <h3
-          className="font-bold text-[15px] text-setu-950 leading-snug mb-1.5 group-hover:text-setu-700 transition-colors line-clamp-2"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          {c.title}
-        </h3>
-        <p className="text-[12px] text-gray-500 leading-relaxed mb-3.5 line-clamp-2">
-          {c.desc}
-        </p>
-        <div className="h-1.5 bg-setu-100 rounded-full overflow-hidden mb-2">
-          <div
-            className="h-full bg-gradient-to-r from-setu-700 to-setu-400 rounded-full"
-            style={{ width: `${pct}%` }}
-          />
-        </div>
-        <div className="flex justify-between items-center text-[12px] mb-3.5">
-          <strong className="text-setu-800">
-            NPR {c.raised.toLocaleString()}
-          </strong>
-          <strong className="text-setu-600">{pct}%</strong>
-        </div>
-        <div className="flex items-center justify-between pt-3 border-t border-setu-50">
-          <div className="flex items-center gap-1 text-[11px] text-gray-500">
-            <Users className="w-3 h-3 text-setu-400" />
-            {c.donors.toLocaleString()} donors
-          </div>
-          <span className="flex items-center gap-1 px-3 py-1.5 bg-setu-700 group-hover:bg-setu-600 text-white text-[11px] font-bold rounded-full transition-colors">
-            Donate <ChevronRight className="w-3 h-3" />
-          </span>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
 export default function HomePage() {
   return (
     <div
       className="bg-cream text-setu-950"
       style={{ fontFamily: "var(--font-body)" }}
     >
-      <section className="bg-cream pt-3 pb-0 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-cream pt-7 pb-0 overflow-hidden relative">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=60&auto=format&fit=crop')",
+            backgroundSize: "cover",
+            backgroundPosition: "center 40%",
+            opacity: 0.9,
+            filter: "blur(2px) saturate(0.5)",
+          }}
+        />
+
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 85% at 50% 50%, transparent 20%, #f5f2e8 85%)",
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Top badge */}
           <div className="flex justify-center mb-8 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-setu-50 border border-setu-200 rounded-full">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-setu-50 border border-setu-200 rounded-full ">
               <span className="w-2 h-2 rounded-full bg-setu-500 animate-pulse flex-shrink-0" />
               <span className="text-[13px] font-semibold text-setu-700 tracking-wide">
                 Nepal's First Unified Donation Platform
@@ -308,11 +142,11 @@ export default function HomePage() {
             style={{ height: "720px" }}
           >
             <div
-              className="absolute rounded-full border border-dashed border-setu-200/50 pointer-events-none"
+              className="absolute rounded-full border-2 border-dashed border-setu-300/100 pointer-events-none"
               style={{ width: "900px", height: "900px" }}
             />
             <div
-              className="absolute rounded-full border border-dashed border-setu-100/35 pointer-events-none"
+              className="absolute rounded-full border-2 border-dashed border-setu-300/100 pointer-events-none"
               style={{ width: "680px", height: "680px" }}
             />
 
@@ -431,7 +265,7 @@ export default function HomePage() {
             >
               <div className="w-[178px] h-[178px] rounded-full overflow-hidden border-4 border-white shadow-[0_8px_32px_rgba(21,104,57,0.15)] group-hover:border-amber-400 group-hover:shadow-[0_14px_44px_rgba(245,158,11,0.28)] transition-all duration-300 group-hover:-translate-y-2">
                 <img
-                  src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=356&q=85&auto=format&fit=crop"
+                  src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=85&auto=format&fit=crop"
                   alt="Goods Donation"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -473,28 +307,6 @@ export default function HomePage() {
                   Browse Campaigns
                 </Link>
               </div>
-              <div className="flex items-center justify-center gap-0">
-                {[
-                  { n: "NPR 2.4Cr+", l: "Raised" },
-                  { n: "18K+", l: "Donors" },
-                  { n: "1,200+", l: "Campaigns" },
-                ].map(({ n, l }, i) => (
-                  <div
-                    key={l}
-                    className={`text-center px-8 ${i < 2 ? "border-r border-setu-200" : ""}`}
-                  >
-                    <p
-                      className="text-[24px] font-bold text-setu-900 leading-none"
-                      style={{ fontFamily: "var(--font-display)" }}
-                    >
-                      {n}
-                    </p>
-                    <p className="text-[12px] text-setu-600/60 font-medium mt-1.5">
-                      {l}
-                    </p>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 
@@ -508,7 +320,7 @@ export default function HomePage() {
                 <br />
                 <em className="italic text-setu-600">Change Nepal.</em>
               </h1>
-              <p className="text-[15px] text-setu-800/55 leading-[1.75] mb-8 max-w-sm mx-auto">
+              <p className="text-[15px] text-setu-1000/50 leading-[1.75] mb-8 max-w-sm mx-auto">
                 Connect with causes that matter. Give money, donate goods, or
                 start a campaign.
               </p>
@@ -597,7 +409,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-8 py-8 border-t border-setu-100 mt-10">
+          <div className="flex flex-wrap items-center justify-center gap-8 py-15 border-t border-setu-300 mt-30">
             {[
               { icon: Users, label: "18,400+ Donors" },
               { icon: ShieldCheck, label: "Verified Campaigns" },
@@ -606,7 +418,7 @@ export default function HomePage() {
             ].map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="flex items-center gap-2 text-[13px] font-medium text-setu-700/55"
+                className="flex items-center gap-2 text-[13px] font-medium text-setu-1000/55"
               >
                 <div className="w-7 h-7 rounded-full bg-setu-100 flex items-center justify-center flex-shrink-0">
                   <Icon className="w-3.5 h-3.5 text-setu-600" />
@@ -617,35 +429,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <div className="grid grid-cols-2 lg:grid-cols-4 bg-setu-900">
-        {[
-          { icon: TrendingUp, num: "NPR 2.4Cr+", label: "Total Raised" },
-          { icon: Heart, num: "1,200+", label: "Campaigns Funded" },
-          { icon: Users, num: "18,400+", label: "Active Donors" },
-          { icon: Package, num: "4,800+", label: "Goods Delivered" },
-        ].map(({ icon: Icon, num, label }, i) => (
-          <div
-            key={label}
-            className={`flex items-center gap-4 px-6 lg:px-8 py-8 lg:py-9 ${i < 3 ? "border-r border-white/[0.07]" : ""} hover:bg-white/[0.03] transition-colors`}
-          >
-            <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-xl bg-white/[0.08] flex items-center justify-center flex-shrink-0">
-              <Icon className="w-5 h-5 text-setu-300" />
-            </div>
-            <div>
-              <p
-                className="text-[22px] lg:text-[26px] font-bold text-white leading-none mb-1"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                {num}
-              </p>
-              <p className="text-[11px] lg:text-[12px] text-white/45 font-medium">
-                {label}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
 
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1195,42 +978,6 @@ export default function HomePage() {
                 {label}
               </div>
             ))}
-          </div>
-        </div>
-        <div
-          className="border-b border-white/10 py-14"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--color-setu-800) 0%, var(--color-setu-900) 100%)",
-          }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-center md:text-left">
-              <h3
-                className="text-2xl font-bold text-white"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Every donation makes a difference.
-              </h3>
-              <p className="text-setu-200 mt-2 text-sm max-w-sm">
-                Join 10,000+ donors building a better Nepal. Your generosity
-                changes lives every day.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-              <Link
-                href="/campaigns"
-                className="px-6 py-3 bg-white text-setu-800 font-semibold rounded-full text-sm hover:bg-setu-50 transition-colors text-center"
-              >
-                Explore Campaigns
-              </Link>
-              <Link
-                href="/register"
-                className="px-6 py-3 bg-setu-500 text-white font-semibold rounded-full text-sm hover:bg-setu-400 transition-colors text-center"
-              >
-                Start Donating
-              </Link>
-            </div>
           </div>
         </div>
       </section>

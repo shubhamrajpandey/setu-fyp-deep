@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, Heart, ChevronDown, LogIn } from "lucide-react";
+import { Menu, X, Heart, ChevronDown, LogIn, Handshake } from "lucide-react";
 
 const navLinks = [
   { label: "Campaigns", href: "/campaigns" },
@@ -12,17 +12,17 @@ const navLinks = [
     href: "#",
     children: [
       {
-        label: "💵 Money Donation",
+        label: "Money Donation",
         sub: "Send funds directly",
         href: "/donations",
       },
       {
-        label: "📦 Goods Donation",
+        label: "Goods Donation",
         sub: "Rice, clothes, medicine",
         href: "/donations/goods",
       },
       {
-        label: "🚨 Emergency Relief",
+        label: "Emergency Relief",
         sub: "Disaster response",
         href: "/campaigns?category=emergency",
       },
@@ -92,14 +92,24 @@ export function Navbar() {
           >
             <div
               className={[
-                "w-9 h-9 rounded-[10px] flex items-center justify-center",
-                "bg-setu-700 group-hover:bg-setu-600",
-                "shadow-[0_4px_12px_rgba(21,104,57,0.3)]",
+                "relative w-9 h-9 rounded-[10px] flex items-center justify-center",
+                "bg-setu-100 group-hover:bg-setu-200",
+                "shadow-[0_4px_12px_rgba(21,104,57,0.15)]",
                 "transition-all duration-200",
               ].join(" ")}
             >
-              <Heart className="w-4 h-4 text-white fill-white" />
+              <Heart
+                className="w-8 h-8 text-setu-700"
+                strokeWidth={1.6}
+                fill="none"
+              />
+
+              <Handshake
+                className="absolute w-5 h-5 text-setu-700"
+                strokeWidth={1.6}
+              />
             </div>
+
             <span
               className="text-[1.5rem] font-bold text-setu-950 leading-none tracking-[-0.3px]"
               style={{ fontFamily: "var(--font-display)" }}

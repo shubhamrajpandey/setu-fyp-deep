@@ -8,6 +8,7 @@ import {
   Twitter,
   Instagram,
   Youtube,
+  Handshake,
 } from "lucide-react";
 
 const footerLinks = {
@@ -34,10 +35,10 @@ const footerLinks = {
   ],
   Support: [
     { label: "Help Center", href: "/help" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "Contact Us", href: "/contact-report" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Report an Issue", href: "/report" },
+    { label: "Report an Issue", href: "/contact-report" },
   ],
 };
 
@@ -47,12 +48,32 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 w-fit">
-              <div className="w-8 h-8 rounded-lg bg-setu-600 flex items-center justify-center">
-                <Heart className="w-4 h-4 text-white fill-white" />
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 no-underline flex-shrink-0 group"
+            >
+              <div
+                className={[
+                  "relative w-9 h-9 rounded-[10px] flex items-center justify-center",
+                  "bg-setu-100 group-hover:bg-setu-200",
+                  "shadow-[0_4px_12px_rgba(21,104,57,0.15)]",
+                  "transition-all duration-200",
+                ].join(" ")}
+              >
+                <Heart
+                  className="w-8 h-8 text-setu-700"
+                  strokeWidth={1.6}
+                  fill="none"
+                />
+
+                <Handshake
+                  className="absolute w-5 h-5 text-setu-700"
+                  strokeWidth={1.6}
+                />
               </div>
+
               <span
-                className="text-xl font-bold text-white"
+                className="text-[1.5rem] font-bold text-white leading-none tracking-[-0.3px]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Setu
@@ -69,11 +90,11 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2 text-xs text-setu-400">
                 <Mail className="w-3.5 h-3.5 flex-shrink-0" />
-                <span>hello@setu.np</span>
+                <span>dipendraroka947@gmail.com</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-setu-400">
                 <Phone className="w-3.5 h-3.5 flex-shrink-0" />
-                <span>+977 01-000-0000</span>
+                <span>+977 9816404196</span>
               </div>
             </div>
             <div className="flex gap-2.5 mt-6">
@@ -112,8 +133,7 @@ export function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-setu-500">
-            © {new Date().getFullYear()} Setu. Built with{" "}
-            <Heart className="w-3 h-3 inline text-setu-400" /> for Nepal.
+            © {new Date().getFullYear()} Setu. Built for Nepal.
           </p>
           <div className="flex items-center gap-1.5 text-xs text-setu-500">
             <span className="w-2 h-2 rounded-full bg-setu-400 inline-block animate-pulse" />
