@@ -4,9 +4,11 @@ import ReactQueryProvider from "../(main)/providers/ReactQueryProvider";
 
 export const metadata: Metadata = {
   title: "Setu – Fund Hope. Change Nepal.",
-  description:
-    "Setu connects donors, charities, and communities across Nepal. Donate money or goods, create campaigns, and track real-time impact.",
+  description: "Setu connects donors, charities, and communities across Nepal.",
   keywords: ["donation", "charity", "Nepal", "crowdfunding", "disaster relief"],
+  icons: {
+    icon: "/image.png",
+  },
 };
 
 export default function AuthLayout({

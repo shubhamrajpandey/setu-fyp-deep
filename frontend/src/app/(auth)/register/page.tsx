@@ -14,6 +14,7 @@ import {
   Check,
   CheckCircle2,
   XCircle,
+  Handshake,
 } from "lucide-react";
 import { Toaster } from "sonner";
 import useRegister from "@/src/hooks/useRegister";
@@ -113,12 +114,30 @@ export default function RegisterPage() {
           <div className="flex-1 flex flex-col items-center justify-center px-8 py-14 max-w-[480px] mx-auto w-full">
             {/* Mobile logo */}
             <div className="lg:hidden mb-10 w-full">
-              <Link href="/" className="flex items-center gap-2.5 no-underline">
-                <div className="w-9 h-9 rounded-xl bg-setu-700 flex items-center justify-center shadow-[0_4px_12px_rgba(26,110,57,0.35)]">
-                  <Heart className="w-4 h-4 text-white fill-white" />
+              <Link
+                href="/"
+                className="flex items-center gap-2.5 no-underline flex-shrink-0 group"
+              >
+                <div
+                  className={[
+                    "relative w-9 h-9 rounded-[10px] flex items-center justify-center",
+                    "bg-setu-100 group-hover:bg-setu-200",
+                    "shadow-[0_4px_12px_rgba(21,104,57,0.15)]",
+                    "transition-all duration-200",
+                  ].join(" ")}
+                >
+                  <Heart
+                    className="w-8 h-8 text-setu-700"
+                    strokeWidth={1.6}
+                    fill="none"
+                  />
+                  <Handshake
+                    className="absolute w-5 h-5 text-setu-700"
+                    strokeWidth={1.6}
+                  />
                 </div>
                 <span
-                  className="text-2xl font-bold text-setu-950"
+                  className="text-[1.5rem] font-bold text-setu-950 leading-none tracking-[-0.3px]"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   Setu
@@ -478,13 +497,28 @@ export default function RegisterPage() {
           <div className="absolute top-10 right-10 z-10">
             <Link
               href="/"
-              className="flex items-center gap-3 no-underline group"
+              className="flex items-center gap-2.5 no-underline flex-shrink-0 group"
             >
-              <div className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-white/25 transition-all duration-200">
-                <Heart className="w-5 h-5 text-white fill-white" />
+              <div
+                className={[
+                  "relative w-9 h-9 rounded-[10px] flex items-center justify-center",
+                  "bg-setu-100 group-hover:bg-setu-200",
+                  "shadow-[0_4px_12px_rgba(21,104,57,0.15)]",
+                  "transition-all duration-200",
+                ].join(" ")}
+              >
+                <Heart
+                  className="w-8 h-8 text-setu-700"
+                  strokeWidth={1.6}
+                  fill="none"
+                />
+                <Handshake
+                  className="absolute w-5 h-5 text-setu-700"
+                  strokeWidth={1.6}
+                />
               </div>
               <span
-                className="text-2xl font-bold text-white leading-none"
+                className="text-[1.5rem] font-bold text-white leading-none tracking-[-0.3px]"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Setu

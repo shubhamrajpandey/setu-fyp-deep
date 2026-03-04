@@ -34,7 +34,6 @@ export default function LoginPage() {
 
   return (
     <>
-      {/* ── Setu-branded Sonner Toaster ── */}
       <Toaster
         position="top-right"
         expand={false}
@@ -77,7 +76,6 @@ export default function LoginPage() {
       />
 
       <div className="min-h-screen flex bg-setu-950">
-        {/* ── LEFT: Image panel ── */}
         <div className="hidden lg:block lg:w-[58%] relative overflow-hidden">
           <img
             src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1400&q=90&auto=format&fit=crop"
@@ -87,7 +85,6 @@ export default function LoginPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-setu-950 via-setu-950/55 to-setu-950/15" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-setu-950/25" />
 
-          {/* Top-left logo */}
           <div className="absolute top-10 left-10 z-10">
             <Link
               href="/"
@@ -120,7 +117,6 @@ export default function LoginPage() {
             </Link>
           </div>
 
-          {/* Bottom content */}
           <div className="absolute bottom-0 left-0 right-0 p-12 z-10">
             <p className="text-setu-300 text-sm font-semibold uppercase tracking-[0.15em] mb-4">
               Nepal's Donation Platform
@@ -138,7 +134,6 @@ export default function LoginPage() {
               time.
             </p>
 
-            {/* Testimonial */}
             <div className="bg-white/10 backdrop-blur-xl border border-white/15 rounded-2xl p-5 max-w-sm mb-8">
               <div className="flex items-center gap-3 mb-3">
                 <img
@@ -170,7 +165,6 @@ export default function LoginPage() {
               </p>
             </div>
 
-            {/* Stats */}
             <div className="flex items-center gap-8">
               {[
                 { n: "NPR 2.4Cr+", l: "Raised" },
@@ -191,12 +185,10 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* ── RIGHT: Form panel ── */}
         <div className="flex-1 flex flex-col bg-cream relative overflow-y-auto">
           <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-setu-700 via-setu-400 to-setu-600" />
 
           <div className="flex-1 flex flex-col items-center justify-center px-8 py-16 max-w-[440px] mx-auto w-full">
-            {/* Mobile logo */}
             <div className="lg:hidden mb-10 w-full">
               <Link href="/" className="flex items-center gap-2.5 no-underline">
                 <div className="w-9 h-9 rounded-xl bg-setu-700 flex items-center justify-center shadow-[0_4px_12px_rgba(26,110,57,0.35)]">
@@ -211,7 +203,6 @@ export default function LoginPage() {
               </Link>
             </div>
 
-            {/* Header */}
             <div className="w-full mb-9">
               <p className="text-setu-600 text-xs font-bold uppercase tracking-[0.15em] mb-2">
                 Welcome back
@@ -226,9 +217,7 @@ export default function LoginPage() {
               </h1>
             </div>
 
-            {/* Form */}
             <form onSubmit={handleSubmit} className="w-full space-y-5">
-              {/* Email */}
               <div>
                 <label className="block text-xs font-bold text-setu-800 uppercase tracking-[0.1em] mb-2">
                   Email Address
@@ -254,7 +243,6 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              {/* Password */}
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs font-bold text-setu-800 uppercase tracking-[0.1em]">
@@ -299,7 +287,6 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              {/* Remember me */}
               <div className="flex items-center gap-2.5">
                 <input
                   id="remember"
@@ -318,7 +305,6 @@ export default function LoginPage() {
                 </label>
               </div>
 
-              {/* Submit */}
               <button
                 type="submit"
                 disabled={loginMutation.isPending}
@@ -337,7 +323,6 @@ export default function LoginPage() {
                 )}
               </button>
 
-              {/* Create account link */}
               <p className="text-center text-sm text-gray-500 pt-1">
                 Don't have one?{" "}
                 <Link
@@ -349,7 +334,6 @@ export default function LoginPage() {
               </p>
             </form>
 
-            {/* Divider */}
             <div className="w-full flex items-center gap-4 my-7">
               <div className="flex-1 h-px bg-setu-100" />
               <span className="text-xs text-gray-400 font-medium">
@@ -358,7 +342,6 @@ export default function LoginPage() {
               <div className="flex-1 h-px bg-setu-100" />
             </div>
 
-            {/* Google */}
             <button
               type="button"
               className="w-full flex items-center justify-center gap-3 py-3.5 bg-white border border-setu-200 hover:border-setu-300 hover:bg-setu-50 rounded-xl text-sm font-semibold text-gray-700 transition-all duration-150 shadow-sm hover:shadow"
@@ -387,7 +370,6 @@ export default function LoginPage() {
               Continue with Google
             </button>
 
-            {/* Trust badge */}
             <div className="w-full mt-8 flex items-center justify-center gap-2">
               <svg
                 className="w-3.5 h-3.5 text-setu-500 flex-shrink-0"
