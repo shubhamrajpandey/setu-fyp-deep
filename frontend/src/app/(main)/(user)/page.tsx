@@ -102,8 +102,8 @@ export default function HomePage() {
               "url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=60&auto=format&fit=crop')",
             backgroundSize: "cover",
             backgroundPosition: "center 40%",
-            opacity: 0.9,
-            filter: "blur(2px) saturate(0.5)",
+            opacity: 0.7,
+            filter: "blur(1px) saturate(0.9)",
           }}
         />
 
@@ -111,7 +111,7 @@ export default function HomePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 90% 85% at 50% 50%, transparent 20%, #f5f2e8 85%)",
+              "radial-gradient(ellipse 90% 75% at 50% 50%, transparent 20%, #e9f3e9ff 85%)",
           }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
