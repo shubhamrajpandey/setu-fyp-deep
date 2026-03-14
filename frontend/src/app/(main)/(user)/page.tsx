@@ -83,46 +83,75 @@ const campaigns = [
 		goal: 150000,
 		donors: 267,
 		cat: "Animals",
+36
+    urgent: true,
+37
+    featured: true,
+38
+    location: "Eastern Nepal",
+39
+  },
+40
+  {
+41
+    id: "2",
+42
+    title: "Help Sunita Beat Cancer",
+43
+    desc: "A 32-year-old mother needs treatment at Bir Hospital. Help her fight stage 3 breast cancer.",
+44
+    img: "https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80&auto=format&fit=crop",
+45
+    raised: 145000,
+46
+    goal: 275000,
+47
+    donors: 892,
+48
+    cat: "Medical",
+49
+    catClass: "medical",
 		catClass: "animals",
 		location: "Kathmandu",
 	},
 ];
 
 export default function HomePage() {
-	return (
-		<div
-			className="bg-cream text-setu-950"
-			style={{ fontFamily: "var(--font-body)" }}>
-			<section className="bg-cream pt-7 pb-0 overflow-hidden relative">
-				<div
-					className="absolute inset-0 pointer-events-none"
-					style={{
-						backgroundImage:
-							"url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=60&auto=format&fit=crop')",
-						backgroundSize: "cover",
-						backgroundPosition: "center 40%",
-						opacity: 0.9,
-						filter: "blur(2px) saturate(0.5)",
-					}}
-				/>
+  return (
+    <div
+      className="bg-cream text-setu-950"
+      style={{ fontFamily: "var(--font-body)" }}
+    >
+      <section className="bg-cream pt-7 pb-0 overflow-hidden relative">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1600&q=60&auto=format&fit=crop')",
+            backgroundSize: "cover",
+            backgroundPosition: "center 40%",
+            opacity: 0.7,
+            filter: "blur(1px) saturate(0.9)",
+          }}
+        />
 
-				<div
-					className="absolute inset-0 pointer-events-none"
-					style={{
-						background:
-							"radial-gradient(ellipse 90% 85% at 50% 50%, transparent 20%, #f5f2e8 85%)",
-					}}
-				/>
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-					{/* Top badge */}
-					<div className="flex justify-center mb-8 animate-fade-in-up">
-						<div className="inline-flex items-center gap-2 px-4 py-2 bg-setu-50 border border-setu-200 rounded-full ">
-							<span className="w-2 h-2 rounded-full bg-setu-500 animate-pulse flex-shrink-0" />
-							<span className="text-[13px] font-semibold text-setu-700 tracking-wide">
-								Nepal's First Unified Donation Platform
-							</span>
-						</div>
-					</div>
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 75% at 50% 50%, transparent 20%, #e9f3e9ff 85%)",
+          }}
+        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          {/* Top badge */}
+          <div className="flex justify-center mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-setu-50 border border-setu-200 rounded-full ">
+              <span className="w-2 h-2 rounded-full bg-setu-500 animate-pulse flex-shrink-0" />
+              <span className="text-[13px] font-semibold text-setu-700 tracking-wide">
+                Nepal's First Unified Donation Platform
+              </span>
+            </div>
+          </div>
 
 					<div
 						className="relative hidden lg:flex items-center justify-center"
